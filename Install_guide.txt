@@ -1,0 +1,2 @@
+To be able to run this program you need to have "cryptography" installed.
+If you haven't already installed cryptography then you can do it with "pip3 install cryptography" and you'll be good to go.
