@@ -11,7 +11,9 @@ kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=salt, iterations=100
 key = base64.urlsafe_b64encode(kdf.derive(password))
 fernet = Fernet(key)
 
-path = r''  //Write your own specified address to read and write encrypted/decrypted files from
+path = r''  #Write your own specified address to read and write encrypted/decrypted files from
+if path == '':
+    path = os.getcwd()
 
 
 fot = input("File Or Text [f/t] ")
