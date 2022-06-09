@@ -6,19 +6,19 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 password_provided = "uTCtdl1MieFX!dY$$LiXa2g$Va4Gi&LUbG!Lu@gn" # Replace This String Value With Whatever You Want (Or Just Keep It As It Is)
 password = password_provided.encode()
-salt = b'\xc3\xd0\x04\xa3\xa5\xa5\x1e\xf5\xd3)\x1b\xf8u\xed\t\x80'
+salt = b'\xc3\xd0\x04\xa3\xa5\xa5\x1e\xf5\xd3)\x1b\xf8u\xed\t\x80' # Change The Salt To Your Needs
 kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=salt, iterations=100000, backend=default_backend())
 key = base64.urlsafe_b64encode(kdf.derive(password))
 fernet = Fernet(key)
 
-path = r''  #Write your own specified address to read and write encrypted/decrypted files from
+path = r''  # Write your own specified address to read and write encrypted/decrypted files from
 if path == '':
     path = os.getcwd()
 
 
-fot = input("File Or Text [f/t] ")
+file_or_text = input("File Or Text [f/t] ")
 
-if fot == "T" or fot == "t":
+if file_or_text == "T" or file_or_text == "t":
     mode = input("Encrypt Or Decrypt [e/d] ")
     
     if mode == "E" or mode == "e":    
@@ -31,7 +31,7 @@ if fot == "T" or fot == "t":
         decrypted = fernet.decrypt(data)
         print(decrypted.decode())
 
-elif fot == "F" or fot == "f":
+elif file_or_text == "F" or file_or_text == "f":
     mode = input("Encrypt Or Decrypt [e/d] ")
     
     if mode == "E" or mode == "e":    
